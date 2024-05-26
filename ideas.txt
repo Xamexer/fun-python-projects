@@ -1,0 +1,17 @@
+- Typing Game
+- Text Adventure DND style
+- tik tak toe (double)
+- snake
+- image to ascii
+- cam to ascii
+- Multiplayer Game
+- Sodoku clearer : player
+- Einkauf
+- Tower defense game
+https://www.dataquest.io/blog/python-projects-for-beginners/
+
+- automated trading bot
+- dentiment analyses
+- block chain voting system
+- online multi player game
+- computer vision -> face detection system
