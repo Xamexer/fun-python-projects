@@ -352,15 +352,12 @@ class MyListener(TuioListener):
         coordinates = int(norm * dim)
         return coordinates
     
-def main():
-    client = TuioClient(("localhost", 3333))
-    t1 = Thread(target=client.start)
-    listener = MyListener()
-    t2 = Thread(target=listener.update)
-    client.add_listener(listener)
-    t1.start()
-    t2.start()
-    image = np.zeros((dim, dim, 3), dtype=np.uint8)
 
-if __name__ == "__main__":
-    main()
+client = TuioClient(("localhost", 3333))
+t1 = Thread(target=client.start)
+listener = MyListener()
+t2 = Thread(target=listener.update)
+client.add_listener(listener)
+t1.start()
+t2.start()
+image = np.zeros((dim, dim, 3), dtype=np.uint8)
