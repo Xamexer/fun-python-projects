@@ -3,7 +3,7 @@ import curses
 import random
 from curses import wrapper
 
-with open('D:\Hobby\Programmieren\learnPython\curses\sentences.txt', 'r') as file:
+with open('.\\sentences.txt', 'r') as file:
     sentences = [line.strip() for line in file]
 
 def main(screen):
