@@ -8,7 +8,6 @@
 - Sodoku clearer : player
 - Einkauf
 - Tower defense game
-https://www.dataquest.io/blog/python-projects-for-beginners/
 
 - automated trading bot
 - dentiment analyses

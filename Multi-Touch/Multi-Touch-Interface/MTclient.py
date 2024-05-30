@@ -20,7 +20,7 @@ normalized_vectors = [[None, (0, 0)]]
 translationVector = (0, 0)
 wasOnScreen = False
 multiplier = 1000
-rectangles = [[0, [460, 400], 300, 0, (255, 100, 0), 2], [1, [380, 350], 250, 0, (100, 100, 255), 2],  [2, [650, 250], 300, 0, (50, 255, 0), 2]  # ID,CENTER, SIZE, ROTATION, COLOR, THICKNESS
+rectangles = [#[0, [460, 400], 300, 0, (255, 100, 0), 2], [1, [380, 350], 250, 0, (100, 100, 255), 2],  [2, [650, 250], 300, 0, (50, 255, 0), 2]  # ID,CENTER, SIZE, ROTATION, COLOR, THICKNESS
               ]
 circles = []
 triangles = []#CENTER, SIZE, ROTATION, COLOR
