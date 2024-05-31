@@ -1,0 +1,103 @@
+networks:
+  mynetwork: {}
+services:
+  bank_server0:
+    build:
+      context: .
+      dockerfile: bank.dockerfile
+    environment:
+      MY_BANK: 0
+      NUM_BANKS: 3
+      NUM_BOURSES: 1
+      PORT_PREFAB: 8084
+    networks:
+      mynetwork: {}
+    ports:
+    - 8081:80
+    - '50051'
+    volumes:
+    - read_only: false
+      source: ./logs/bank.log
+      target: /code/bank.log
+      type: bind
+  bank_server1:
+    build:
+      context: .
+      dockerfile: bank.dockerfile
+    environment:
+      MY_BANK: 1
+      NUM_BANKS: 3
+      NUM_BOURSES: 1
+      PORT_PREFAB: 8085
+    networks:
+      mynetwork: {}
+    ports:
+    - 8082:80
+    - '50052'
+    volumes:
+    - read_only: false
+      source: ./logs/bank.log
+      target: /code/bank.log
+      type: bind
+  bank_server2:
+    build:
+      context: .
+      dockerfile: bank.dockerfile
+    environment:
+      MY_BANK: 2
+      NUM_BANKS: 3
+      NUM_BOURSES: 1
+      PORT_PREFAB: 8086
+    networks:
+      mynetwork: {}
+    ports:
+    - 8083:80
+    - '50053'
+    volumes:
+    - read_only: false
+      source: ./logs/bank.log
+      target: /code/bank.log
+      type: bind
+  bourse_client0:
+    build:
+      context: .
+      dockerfile: bourse.dockerfile
+    depends_on:
+    - bank_server0
+    - bank_server1
+    - bank_server2
+    environment:
+      HIGH_COURSE: 32
+      LOW_COURSE: 59
+      MY_BOURSE: 0
+      MY_SECURITIES: FB,AAPL,TLSA,MYB,NVDA
+      NUM_BANKS: 3
+      NUM_BOURSES: 1
+      PORT_PREFAB: 8087
+    networks:
+      mynetwork: {}
+    ports:
+    - 8084:80
+    volumes:
+    - read_only: false
+      source: ./logs/bourse.log
+      target: /code/bourse.log
+      type: bind
+  broker_client:
+    build:
+      context: .
+      dockerfile: broker.dockerfile
+    depends_on:
+    - bank_server0
+    - bank_server1
+    - bank_server2
+    environment:
+      NUM_BANKS: 3
+    networks:
+      mynetwork: {}
+    volumes:
+    - read_only: false
+      source: ./logs/bourse.log
+      target: /code/bourse.log
+      type: bind
+version: '3'

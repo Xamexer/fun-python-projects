@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service BankInteraction {
+    rpc LendMoney(LendRequest) returns (LendResponse) {}
+}
+
+message LendRequest {
+    int32 amount = 1;
+    int32 bank = 2;
+}
+
+message LendResponse {
+    bool lendAccept = 1;
+}

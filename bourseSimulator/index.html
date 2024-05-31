@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banking Program</title>
+</head>
+<body>
+  <h1>Banking Program</h1>
+  <form action="/request" method="get">
+  </div>
+  <input type="submit" value="Request Test">
+  <br>
+  <br>
+</form>
+  <form action="/portfolio" method="get">
+    </div>
+    <input type="submit" value="Total Portfolio">
+    <br>
+    <br>
+  </form>
+  <form action="/workerAction" method="post">
+    <label for="security">Security:</label>
+    <select id="security" name="security">
+      <option value="">- Choose Security -</option>
+      <option value="NVDA">NvidiaCo.</option>
+      <option value="AAPL">AppleInc.</option>
+      <option value="TLSA">TeslaInc.</option>
+      <option value="FB">FaceBookInc.</option>
+      <option value="MYB">MoostYourBoostInc.</option>
+    </select>
+    <br>
+    <label for="amount">Amount:</label>
+    <input type="text" id="amount" name="amount">
+    <br>
+    <input type="submit" value="Buy/Sell">
+  </form>
+  <br>
+  <form action="/customerAction" method="post">
+    <label for="money">Money:</label>
+    <input type="text" id="security" name="security">
+    <label for="moneySymbol">$</label>
+    <br>
+    <input type="submit" value="Pay out/Deposit">
+  </form>
+</body>
+</html>
