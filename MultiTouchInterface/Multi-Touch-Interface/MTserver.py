@@ -159,7 +159,7 @@ class ProcessTracking:
 ########
 
 
-# cap = cv2.VideoCapture('mt_camera_raw.AVI')
-cap = cv2.VideoCapture('camera_test.AVI')
+cap = cv2.VideoCapture('mt_camera_raw.AVI')
+#cap = cv2.VideoCapture('camera_test.AVI')
 fingerTracking = ProcessTracking(cap)
 fingerTracking.processVideo()

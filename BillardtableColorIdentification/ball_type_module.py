@@ -186,7 +186,7 @@ def getColorCode(dummy):
     elif dummy == 3:
         return "Yellow"
     else:
-        return "No fucking clue"
+        return "No clue"
 
 def most_frequent(List):
     counter = 0

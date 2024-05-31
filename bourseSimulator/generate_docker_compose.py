@@ -116,7 +116,6 @@ service = {
     }
 services[service_name] = service
 
-# Create the Docker Compose dictionary
 docker_compose = {
     "version": "3",
     "services": services,
@@ -125,6 +124,6 @@ docker_compose = {
     }
 }
 print(docker_compose)
-# Save the Docker Compose to a file
+
 with open("docker-compose.yml", "w") as f:
     yaml.dump(docker_compose, f)
