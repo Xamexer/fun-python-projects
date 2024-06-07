@@ -2,7 +2,7 @@ class CursesUtilities:
     def __init__(self, screen):
         self.screen = screen
 
-    def drawLine(self, start: tuple, end: tuple, char: str, color) -> None:
+    def draw_line(self, start: tuple, end: tuple, char: str, color) -> None:
         y1, x1 = start
         y2, x2 = end
         dx = abs(x2 - x1)
@@ -23,7 +23,7 @@ class CursesUtilities:
                 err += dx
                 y1 += sy
 
-    def drawBox(self, start: tuple, end: tuple, char: str, color) -> None:
+    def draw_box(self, start: tuple, end: tuple, char: str, color) -> None:
         y1, x1 = min(start[0], end[0]), min(start[1], end[1])
         y2, x2 = max(start[0], end[0]), max(start[1], end[1])
 
@@ -31,7 +31,7 @@ class CursesUtilities:
             for y in range(y1, y2 + 1):
                 self.screen.addch(y, x, char, color)
 
-    def drawBorder(self, start: tuple, end: tuple, char: str, color) -> None:
+    def draw_border(self, start: tuple, end: tuple, char: str, color) -> None:
         y1, x1 = min(start[0], end[0]), min(start[1], end[1])
         y2, x2 = max(start[0], end[0]), max(start[1], end[1])
 
