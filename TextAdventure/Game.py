@@ -25,6 +25,7 @@ class Game:
             GameState.WORLD_MAP: WorldMapState(self),
             GameState.CHARACTER_MENU: CharacterMenuState(self),
             GameState.BATTLE: BattleState(self)
+            #
         }
 
     def set_state(self, new_state):
