@@ -1,8 +1,9 @@
 from game_states.base_state import BaseState, BaseSubState
 from dictionaries.state_enums import MainMenuSubState
+from dictionaries.input import input
 
 class MainMenuDefaultSubState(BaseSubState):
-    def handle_input(self):
+    def handle_input(self,key):
         pass
 
     def update(self):

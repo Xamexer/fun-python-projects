@@ -6,8 +6,8 @@ from game import Game
 
 def main(screen) -> None:
     initialize_colors()
-    mainGame = Game(screen)
-    mainGame.run()
+    main_game = Game(screen)
+    main_game.run()
 
 if __name__ == "__main__":
     wrapper(main)

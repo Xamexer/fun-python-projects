@@ -9,7 +9,7 @@ class Color(Enum):
 # Global color dictionary
 COLORS = {}
 
-def initializeColors() -> None:
+def initialize_colors() -> None:
     curses.start_color()
     curses.use_default_colors()
 

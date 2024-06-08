@@ -1,8 +1,9 @@
 from game_states.base_state import BaseState, BaseSubState
 from dictionaries.state_enums import BattleSubState
+from dictionaries.input import input
 
 class BattleDefaultSubState(BaseSubState):
-    def handle_input(self):
+    def handle_input(self,key):
         pass
 
     def update(self):

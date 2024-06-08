@@ -17,15 +17,16 @@ from game_states.world_map_state import WorldMapState
 class Game:
     def __init__(self, screen) -> None:
         self.screen = screen
-        self.cUtils = CursesUtilities(screen)
-        self.state = GameState.MAIN_MENU
+        self.c_utils = CursesUtilities(screen)
+        self.screen.nodelay(True)
+        self.state = GameState.WORLD_MAP
         self.player = Player()
+
         self.states = {
             GameState.MAIN_MENU: MainMenuState(self),
             GameState.WORLD_MAP: WorldMapState(self),
             GameState.CHARACTER_MENU: CharacterMenuState(self),
             GameState.BATTLE: BattleState(self)
-            #
         }
 
     def set_state(self, new_state):
@@ -34,7 +35,12 @@ class Game:
     def run(self):
         while True:
             current_state = self.states[self.state]
-            current_state.handle_input()
+            try:
+                key = self.screen.getkey()
+                current_state.handle_input(key)
+            except:
+                pass
             current_state.update()
             current_state.render()
+            self.screen.refresh()
             time.sleep(0.1)

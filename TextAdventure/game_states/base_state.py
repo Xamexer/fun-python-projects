@@ -2,7 +2,7 @@ class BaseSubState:
     def __init__(self, game):
         self.game = game
 
-    def handle_input(self):
+    def handle_input(self,key):
         pass
 
     def update(self):
@@ -20,9 +20,9 @@ class BaseState:
     def set_substate(self, new_substate):
         self.substate = new_substate
     
-    def handle_input(self):
+    def handle_input(self,key):
         current_substate = self.substates[self.substate]
-        current_substate.handle_input()
+        current_substate.handle_input(key)
     
     def update(self):
         current_substate = self.substates[self.substate]
