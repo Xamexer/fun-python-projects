@@ -1,27 +1,25 @@
 import time
 from enum import Enum
-from dictionaries import COLORS, Color
-from CursesUtilities import CursesUtilities
+from utlis.curses_utilities import CursesUtilities
 
-from Player import Player
+from dictionaries.state_enums import GameState
+from dictionaries.colors import Color, COLORS
 
-from gameStates.MainMenuState import MainMenuState
-from gameStates.WorldMapState import WorldMapState
-from gameStates.CharacterMenuState import CharacterMenuState
-from gameStates.BattleState import BattleState
+from player import Player
 
-class GameState(Enum):
-    DEFAULT = 0
-    MAIN_MENU = 1
-    WORLD_MAP = 2
-    CHARACTER_MENU = 3
-    BATTLE = 4
+from game_states.battle_state import BattleState
+from game_states.character_menu_state import CharacterMenuState
+from game_states.main_menu_state import MainMenuState
+from game_states.world_map_state import WorldMapState
+
+
 
 class Game:
     def __init__(self, screen) -> None:
         self.screen = screen
         self.cUtils = CursesUtilities(screen)
         self.state = GameState.MAIN_MENU
+        self.player = Player()
         self.states = {
             GameState.MAIN_MENU: MainMenuState(self),
             GameState.WORLD_MAP: WorldMapState(self),

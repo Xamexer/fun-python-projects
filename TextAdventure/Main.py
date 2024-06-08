@@ -1,6 +1,8 @@
 from curses import wrapper
 from dictionaries.colors import initialize_colors
-from Game import Game
+from game import Game
+
+
 
 def main(screen) -> None:
     initialize_colors()
