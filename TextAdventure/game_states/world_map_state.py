@@ -4,7 +4,7 @@ from dictionaries.input import input
 
 class WorldMapDefaultSubState(BaseSubState):
     def handle_input(self,key):
-        self.game.screen.addstr(10,10,"TEST")
+        xxx = self.game.screen.getmaxyx()
         match key:
             case k if k in input['menu']:
                 pass
@@ -12,17 +12,21 @@ class WorldMapDefaultSubState(BaseSubState):
                 pass
             case k if k in input['back']:
                 pass
-            case k if k in input['up']:
-                self.game.screen.addstr(20,20,"UP")
-                pass
             case k if k in input['down']:
-                self.game.screen.addstr(20,20,"DW")
+                if self.game.player.coordinate_y < self.game.screen.getmaxyx()[0]-1:
+                    self.game.player.move_player_y(1)
+                pass
+            case k if k in input['up']:
+                if self.game.player.coordinate_y > 0:
+                    self.game.player.move_player_y(-1)
                 pass
             case k if k in input['right']:
-                self.game.screen.addstr(20,20,"RG")
+                if self.game.player.coordinate_x < self.game.screen.getmaxyx()[1]-1:
+                    self.game.player.move_player_x(1)
                 pass
             case k if k in input['left']:
-                self.game.screen.addstr(20,20,"LF")
+                if self.game.player.coordinate_x > 0:
+                    self.game.player.move_player_x(-1)
                 pass
         pass
 
@@ -30,6 +34,7 @@ class WorldMapDefaultSubState(BaseSubState):
         pass
 
     def render(self):
+        self.game.screen.addstr(self.game.player.coordinate_y,self.game.player.coordinate_x,f"{self.game.player.symbol}")
         pass
 
 class WorldMapState(BaseState):

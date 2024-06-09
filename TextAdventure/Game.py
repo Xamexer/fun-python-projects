@@ -41,6 +41,7 @@ class Game:
             except:
                 pass
             current_state.update()
+            self.screen.clear()
             current_state.render()
             self.screen.refresh()
-            time.sleep(0.1)
+            time.sleep(0.01)
