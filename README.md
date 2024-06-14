@@ -9,7 +9,7 @@ This repository is dedicated to my journey of mastering Python and its various a
 * **Machine Learning and AI**: Exploring machine learning with libraries like Scikit-Learn and TensorFlow.
 
 I will document various small projects, from practical applications to fun little games, showcasing the breadth and depth of Python’s capabilities. This repository serves as a comprehensive guide to my Python learning journey and the diverse skills I develop.
-
+<hr>
 
 ![](https://github.com/Xamexer/learnPython/blob/main/Mastermind/MastermindDemo.gif)
 ![](https://github.com/Xamexer/learnPython/blob/main/Typinggame/TypingDemo.gif)
