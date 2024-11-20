@@ -1,4 +1,5 @@
 import random
+from dictionaries.tiles import tiles
 
 class Map:
     def __init__(self, width=None, height=None, empty_prob=None, grass_prob=None, tree_prob=None, map_file=None):
@@ -21,18 +22,18 @@ class Map:
     def random_tile(self, empty_prob, grass_prob, tree_prob):
         rand = random.random()
         if rand < empty_prob:
-            return " "
+            return tiles['air'].tile
         elif rand < empty_prob + grass_prob:
-            return ","
+            return tiles['grass'].tile
         else:
-            return "T"
+            return tiles['tree'].tile
 
     def load_map(self, map_file):
         with open(map_file, 'r') as f:
             lines = f.readlines()
             self.grid = [list(line.strip()) for line in lines]
             self.height = len(self.grid)
-            self.width = len(self.grid[0]) if self.height > 0 else 0
+            self.width = len(max(self.grid, key=len)) if self.height > 0 else 0
 
     def get_visible_section(self, player_x, player_y, screen_width, screen_height):
         half_screen_width = screen_width // 2

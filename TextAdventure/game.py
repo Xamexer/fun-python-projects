@@ -6,7 +6,6 @@ from map import Map
 from utlis.curses_utilities import CursesUtilities
 
 from dictionaries.state_enums import GameState
-from dictionaries.colors import Color, COLORS
 
 from player import Player
 
@@ -15,6 +14,7 @@ from game_states.character_menu_state import CharacterMenuState
 from game_states.main_menu_state import MainMenuState
 from game_states.world_map_state import WorldMapState
 
+FRAMERATE = 30
 
 class Game:
     def __init__(self, screen, map_file=None) -> None:
@@ -24,12 +24,13 @@ class Game:
         self.state = GameState.WORLD_MAP
 
         if map_file:
-            self.world_map = Map(map_file=map_file)
+            self.current_map = Map(map_file=map_file)
         else:
-            self.world_map = Map(1000, 1000, 0.85, 0.13, 0.02)
-        self.player = Player(self.world_map.width, self.world_map.height)
+            default_map = Map(1000, 1000, 0.85, 0.13, 0.02)
+            self.current_map = default_map
+        self.player = Player(self.current_map.width, self.current_map.height)
 
-        self.cave_map = Map(400, 400, 0.90, 0.10, 0.00)
+        #self.cave_map = Map(400, 400, 0.90, 0.10, 0.00)
 
         self.states = {
             GameState.MAIN_MENU: MainMenuState(self),
@@ -56,7 +57,7 @@ class Game:
             self.screen.clear()
             current_state.render()
             self.screen.refresh()
-            time.sleep(0.01)
+            time.sleep(1/FRAMERATE)
 
     def resize(self):
         self.screen.clear()

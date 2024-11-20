@@ -1,6 +1,6 @@
 from game_states.base_state import BaseState, BaseSubState
 from dictionaries.state_enums import CharacterMenuSubState
-from dictionaries.input import input
+
 
 class CharacterMenuDefaultSubState(BaseSubState):
     def handle_input(self,key):
@@ -12,6 +12,7 @@ class CharacterMenuDefaultSubState(BaseSubState):
     def render(self):
         pass
 
+
 class CharacterMenuStatsSubState(BaseSubState):
     def handle_input(sel,keyf):
         pass
@@ -21,6 +22,7 @@ class CharacterMenuStatsSubState(BaseSubState):
 
     def render(self):
         pass
+
 
 class CharacterMenuMagicSubState(BaseSubState):
     def handle_input(self,key):
@@ -32,6 +34,7 @@ class CharacterMenuMagicSubState(BaseSubState):
     def render(self):
         pass
 
+
 class CharacterMenuEquipmentSubState(BaseSubState):
     def handle_input(self,key):
         pass
@@ -42,6 +45,7 @@ class CharacterMenuEquipmentSubState(BaseSubState):
     def render(self):
         pass
 
+
 class CharacterMenuInventorySubState(BaseSubState):
     def handle_input(self,key):
         pass
@@ -51,6 +55,7 @@ class CharacterMenuInventorySubState(BaseSubState):
 
     def render(self):
         pass
+
 
 class CharacterMenuState(BaseState):
     def __init__(self, game):
