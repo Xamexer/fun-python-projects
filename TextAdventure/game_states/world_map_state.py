@@ -2,7 +2,6 @@ import curses
 from game_states.base_state import BaseState, BaseSubState
 from dictionaries.state_enums import WorldMapSubState
 from dictionaries.input import input
-from dictionaries.tiles import colliders
 
 class WorldMapDefaultSubState(BaseSubState):
     def handle_input(self, key):
@@ -38,31 +37,37 @@ class WorldMapDefaultSubState(BaseSubState):
             delta = direction_or_coords
         else:
             raise ValueError("Invalid input; must be a direction string or a tuple of (x_change, y_change)")
-
         x_change, y_change = delta
 
         new_x = self.game.player.coordinate_x + x_change
         new_y = self.game.player.coordinate_y + y_change
-
         # boundries
         if not (0 <= new_x < self.game.current_map.width and 0 <= new_y < self.game.current_map.height):
             return
         
         collidable_object = self.game.current_map.grid[new_y][new_x]
         next_collidable_object = self.game.current_map.grid[new_y + y_change][new_x + x_change]
+        
         match self.collide_logic(self.game.player ,collidable_object, next_collidable_object):
             case 'stay':
                 pass
             case 'move':
                 self.game.player.move(x_change, y_change)
+            case 'push' :
+                self.game.current_map.grid[new_y + y_change][new_x + x_change] = collidable_object
+                self.game.current_map.grid[new_y][new_x] = self.game.current_map.tiles['air']
+                self.game.player.move(x_change, y_change)
             case 'fight':
                 pass
             
-    def collide_logic(self, player,collidable_object, next_collidable_object):
-        if collidable_object in colliders['solid']:
-            return 'stay'
-        else:
-            return 'move'
+    def collide_logic(self, player, collidable_object, next_collidable_object):
+        match collidable_object:
+            case obj if ((obj in self.game.current_map.colliders['solid']) or (obj in self.game.current_map.colliders['moveable'] and next_collidable_object not in self.game.current_map.colliders['walkable'])):
+                return 'stay'
+            case obj if obj in self.game.current_map.colliders['moveable'] and next_collidable_object in self.game.current_map.colliders['walkable']:
+                return 'push'
+            case _:
+                return 'move'
 
     def update(self):
         pass
@@ -89,7 +94,7 @@ class WorldMapDefaultSubState(BaseSubState):
             for x, tile in enumerate(row):
                 if 0 <= y + offset_y < max_y and 0 <= x + offset_x < max_x:
                     try:
-                        self.game.screen.addstr(y + offset_y, x + offset_x, tile)
+                        self.game.screen.addstr(y + offset_y, x + offset_x, tile.tile, tile.color)
                     except curses.error:
                         pass
 

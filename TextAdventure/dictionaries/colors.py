@@ -8,6 +8,7 @@ class Color(Enum):
     WHITE = 4
     DARK_GREEN = 5
     GRAY =  6
+    DARK_GRAY = 7
 
 # Global color dictionary
 COLORS = {}
@@ -22,6 +23,7 @@ def initialize_colors() -> None:
     curses.init_pair(Color.WHITE.value, curses.COLOR_WHITE, -1)
     curses.init_pair(Color.DARK_GREEN.value, 2, -1)
     curses.init_pair(Color.GRAY.value, 8, -1)
+    curses.init_pair(Color.DARK_GRAY.value, 7, -1)
 
     COLORS[Color.RED] = curses.color_pair(Color.RED.value)
     COLORS[Color.ORANGE] = curses.color_pair(Color.ORANGE.value)
@@ -29,3 +31,4 @@ def initialize_colors() -> None:
     COLORS[Color.WHITE] = curses.color_pair(Color.WHITE.value)
     COLORS[Color.DARK_GREEN] = curses.color_pair(Color.DARK_GREEN.value)
     COLORS[Color.GRAY] = curses.color_pair(Color.GRAY.value)
+    COLORS[Color.DARK_GRAY] = curses.color_pair(Color.DARK_GRAY.value)

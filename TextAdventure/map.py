@@ -1,14 +1,18 @@
 import random
 from dictionaries.tiles import tiles
+from dictionaries.tiles import get_tiles_and_colliders
+
 
 class Map:
     def __init__(self, width=None, height=None, empty_prob=None, grass_prob=None, tree_prob=None, map_file=None):
+        self.tiles, self.colliders = get_tiles_and_colliders()
         if map_file:
             self.load_map(map_file)
         else:
             self.width = width
             self.height = height
             self.grid = self.generate_map(width, height, empty_prob, grass_prob, tree_prob)
+            
 
     def generate_map(self, width, height, empty_prob, grass_prob, tree_prob):
         return [
@@ -21,12 +25,13 @@ class Map:
 
     def random_tile(self, empty_prob, grass_prob, tree_prob):
         rand = random.random()
+        
         if rand < empty_prob:
-            return tiles['air'].tile
+            return self.tiles['air']
         elif rand < empty_prob + grass_prob:
-            return tiles['grass'].tile
+            return self.tiles['grass']
         else:
-            return tiles['tree'].tile
+            return self.tiles['tree']
 
     def load_map(self, map_file):
         with open(map_file, 'r') as f:
