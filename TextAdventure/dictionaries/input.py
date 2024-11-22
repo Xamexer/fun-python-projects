@@ -1,9 +1,20 @@
+from enum import Enum
+
+class Input(Enum):
+    MENU = 0
+    CONFIRM = 1
+    BACK = 2
+    LEFT = 3
+    UP = 4
+    RIGHT = 5
+    DOWN = 6
+
 input = {
-    'menu' : ["f","F"],
-    'confirm' : ["g","G"],
-    'back' : ["v","V"],
-    'up': ["KEY_UP","w","W"],
-    'down': ["KEY_DOWN","s","S"],
-    'right' : ["KEY_RIGHT","d","D"],
-    'left': ["KEY_LEFT","a","A"]
+    Input.MENU : ["f","F"],
+    Input.CONFIRM : ["g","G"],
+    Input.BACK : ["v","V"],
+    Input.LEFT : ["KEY_LEFT","a","A"],
+    Input.UP : ["KEY_UP","w","W"],
+    Input.RIGHT : ["KEY_RIGHT","d","D"],
+    Input.DOWN : ["KEY_DOWN","s","S"]
 }

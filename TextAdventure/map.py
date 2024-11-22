@@ -1,17 +1,22 @@
 import random
-from dictionaries.tiles import tiles
-from dictionaries.tiles import get_tiles_and_colliders
+from dictionaries.tiles import get_tiles
+from dictionaries.colliders import get_colliders
+from dictionaries.sprites import Sprite
+from dictionaries.colors import COLORS, Color
 
 
 class Map:
     def __init__(self, width=None, height=None, empty_prob=None, grass_prob=None, tree_prob=None, map_file=None):
-        self.tiles, self.colliders = get_tiles_and_colliders()
+        self.tiles = get_tiles()
+        self.sprites = []
+        self.colliders = get_colliders(self.tiles)
         if map_file:
             self.load_map(map_file)
         else:
             self.width = width
             self.height = height
             self.grid = self.generate_map(width, height, empty_prob, grass_prob, tree_prob)
+            self.sprites.append(Sprite('box','box', '+', COLORS[Color.GRAY], 2, 2))
             
 
     def generate_map(self, width, height, empty_prob, grass_prob, tree_prob):
