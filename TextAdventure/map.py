@@ -16,6 +16,7 @@ class Map:
             self.width = width
             self.height = height
             self.grid = self.generate_map(width, height, empty_prob, grass_prob, tree_prob)
+        
             self.sprites.append(Sprite('box','box', '+', COLORS[Color.GRAY], 2, 2))
             
 

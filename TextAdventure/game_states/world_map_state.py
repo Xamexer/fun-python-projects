@@ -31,7 +31,7 @@ class WorldMapDefaultSubState(BaseSubState):
             Direction.UP: (0, -1),
             Direction.DOWN: (0, 1),
             Direction.LEFT: (-1, 0),
-            Direction.RIGHT: (1, 0),
+            Direction.RIGHT: (1, 0)
         }
         if isinstance(direction_or_coords, Direction):
             delta = direction_mapping.get(direction_or_coords)

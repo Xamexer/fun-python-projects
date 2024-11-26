@@ -1,0 +1,22 @@
+sprite_templates:
+  wolf:
+    type: 'wolf'
+    behavior: 'aggressive'
+    hp: 20
+    sprite_char: 'W'
+
+  dwarf:
+    type: 'dwarf'
+    behavior: 'friendly'
+    hp: 100
+    sprite_char: '@'
+    dialogue:
+      initial: 'Hallo, Reisender!'
+      quest_given: 'Kannst du mir etwas bringen?'
+      quest_completed: 'Danke für deine Hilfe!'
+
+  rabbit:
+    type: 'rabbit'
+    behavior: 'passive'
+    hp: 5
+    sprite_char: 'R'

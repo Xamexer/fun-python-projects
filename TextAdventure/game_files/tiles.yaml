@@ -1,0 +1,51 @@
+tiles:
+  air:
+    tiles:
+      - ' '
+    color: 'WHITE'
+    solid: false
+    interactable: false
+  grass:
+    tiles:
+      - ','
+      - '`'
+    color: 'GREEN'
+    solid: false
+    interactable: false
+  tree:
+    tiles:
+      - 'T'
+    color: 'GREEN'
+    solid: true
+    interactable: true
+    interaction_type: 'harvest'
+    interactions:
+      dialogue:
+        default:
+          text:
+            - 'Oh, a large tree.'
+            - 'Its a tree.'
+            - 'I need an axe.'
+        weak_tool:
+          text:
+            - 'My axe is too weak to cut this tree.'
+        strong_tool:
+          requires_decision: true
+          text:
+            - 'Do you want to chop down the tree?'
+        success:
+          text:
+            - 'You chop down the tree and collect 3 wood.'
+      requirements:
+        tool:
+          - 'axe'
+        min_level: 2
+      drops:
+        - item: 'wood'
+          quantity: 3
+  wall:
+    tiles:
+      - '#'
+    color: 'GRAY'
+    solid: true
+    interactable: false

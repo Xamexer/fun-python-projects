@@ -1,0 +1,33 @@
+quests:
+  - id: 'wolf_hunt'
+    description: 'Hilf Eldrin, die Wölfe zu bekämpfen.'
+    optional: true
+    accept_dialogue: 'Danke! Wir zählen auf dich.'
+    reject_dialogue: 'Das ist schade. Vielleicht änderst du deine Meinung.'
+    objectives:
+      - id: 'talk_to_eldrin'
+        type: 'talk'
+        target: 'eldrin'
+        description: 'Sprich mit Eldrin, um die Quest zu starten.'
+        next: ['kill_wolves']
+
+      - id: 'kill_wolves'
+        type: 'kill'
+        target: 'wolf'
+        count: 5
+        description: 'Besiege 5 Wölfe.'
+        next: ['report_to_eldrin']
+
+      - id: 'report_to_eldrin'
+        type: 'talk'
+        target: 'eldrin'
+        description: 'Berichte Eldrin über deinen Erfolg.'
+        next: ['quest_complete']
+
+      - id: 'quest_complete'
+        type: 'complete'
+        description: 'Die Quest ist abgeschlossen.'
+
+    rewards:
+      - type: 'gold'
+        amount: 100
