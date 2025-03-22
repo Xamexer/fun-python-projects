@@ -26,7 +26,7 @@ class Game:
         if map_file:
             self.current_map = Map(map_file=map_file)
         else:
-            default_map = Map(120, 30, 0.85, 0.13, 0.02)
+            default_map = Map(1200, 300, 0.85, 0.13, 0.02)
             self.current_map = default_map
         self.player = Player(self.current_map.width, self.current_map.height)
 

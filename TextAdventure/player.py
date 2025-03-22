@@ -8,6 +8,7 @@ class Direction(Enum):
     RIGHT = 2
     DOWN = 3
 
+
 class Player:
     def __init__(self, map_width, map_height):
         self.symbol = "o"

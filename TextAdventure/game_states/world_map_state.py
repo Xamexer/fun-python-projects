@@ -10,6 +10,7 @@ class WorldMapDefaultSubState(BaseSubState):
             case k if k in input[Input.MENU]:
                 pass
             case k if k in input[Input.CONFIRM]:
+                self.interact_infront()
                 pass
             case k if k in input[Input.BACK]:
                 pass
@@ -52,7 +53,9 @@ class WorldMapDefaultSubState(BaseSubState):
         self.execute_collision_logic(new_x,new_y,x_change,y_change)
 
 
-
+    def interact_infront(self):
+        self.game.current_map.grid[self.game.player.coordinate_y + self.game.player.direction[0]][self.game.player.coordinate_x + self.game.player.direction[1]] = self.game.current_map.tiles['air']
+        return
     def execute_collision_logic(self, new_x, new_y, x_change, y_change):
         # Check for tile collisions
         collidable_tile = self.game.current_map.grid[new_y][new_x]
