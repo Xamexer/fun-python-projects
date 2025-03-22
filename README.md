@@ -1,4 +1,4 @@
-# deep_dive_python
+# deep-dive-python
 This repository is dedicated to my journey of mastering Python and its various applications. Here, I will explore:
 
 * **Core Python Concepts**: Understanding the fundamentals of Python, including logic, data structures, algorithms, and more.
@@ -11,8 +11,8 @@ This repository is dedicated to my journey of mastering Python and its various a
 I will document various small projects, from practical applications to fun little games, showcasing the breadth and depth of Python’s capabilities. This repository serves as a comprehensive guide to my Python learning journey and the diverse skills I develop.
 <hr>
 
-![](https://github.com/Xamexer/deep_dive_python/blob/main/Mastermind/MastermindDemo.gif)
-![](https://github.com/Xamexer/deep_dive_python/blob/main/Typinggame/TypingDemo.gif)
+![](https://github.com/Xamexer/deep-dive-python/blob/main/projects/Mastermind/MastermindDemo.gif)
+![](https://github.com/Xamexer/deep-dive-python/blob/main/projects/Typinggame/TypingDemo.gif)
 
-![](https://github.com/Xamexer/deep_dive_python/blob/main/MultiTouchInterface/Multi-Touch-Interface/InfraredCamDemo.gif)
-![](https://github.com/Xamexer/deep_dive_python/blob/main/MultiTouchInterface/Multi-Touch-Interface/TouchDemo.gif)
+![](https://github.com/Xamexer/deep-dive-python/blob/main/projects/MultiTouchInterface/Multi-Touch-Interface/InfraredCamDemo.gif)
+![](https://github.com/Xamexer/deep-dive-python/blob/main/projects/MultiTouchInterface/Multi-Touch-Interface/TouchDemo.gif)
