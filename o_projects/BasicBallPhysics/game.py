@@ -3,14 +3,16 @@ import random
 import math
 import colorsys
 from collision_ball import CollisionBall
+import collections
 
-SCREEN_WIDTH = 1500
-SCREEN_HEIGHT = 1000
+SCREEN_WIDTH = 2050
+SCREEN_HEIGHT = 1150
+TRAIL_AMOUNT = 10
 
 FPS = 110
 BALLS_AMOUNT = 1
 
-GRAVITY = 0.1
+GRAVITY = 0.2
 FRICTION = 0.004
 RESTITUTION = 0.8
 
@@ -19,11 +21,10 @@ VELOCITY_SLEEP_EPSILON = 0.05
 class Game:
     def __init__(self) -> None:
         pygame.init()
-        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT),pygame.FULLSCREEN)
         self.clock = pygame.time.Clock()
         self.running = True
         
-        # Ball list
         self.balls = [
             CollisionBall(
                 center=(
@@ -51,6 +52,9 @@ class Game:
         self.creating_ball = None
         self.create_start_time = None
 
+        for ball in self.balls:
+            ball.trail = collections.deque(maxlen=TRAIL_AMOUNT)
+
     def run(self) -> None:
         while self.running:
             self.handle_events()
@@ -77,6 +81,9 @@ class Game:
                         self.drag_offset = (ball.center[0] - mouse_pos[0],
                                             ball.center[1] - mouse_pos[1])
                         self.last_mouse_pos = mouse_pos
+                        if hasattr(ball, "trail"):
+                            ball.trail.clear()
+
                         clicked_on_ball = True
                         break
 
@@ -95,6 +102,7 @@ class Game:
                     self.last_mouse_pos = mouse_pos
 
                     self.balls.append(self.creating_ball)
+                    self.creating_ball.trail = collections.deque(maxlen=TRAIL_AMOUNT)
 
             elif event.type == pygame.MOUSEBUTTONUP:
                 if self.dragging_ball:
@@ -112,12 +120,6 @@ class Game:
 
                         self.creating_ball = None
                         self.create_start_time = None
-
-                    if self.last_mouse_pos is not None:
-                        mouse_pos = pygame.mouse.get_pos()
-                        dx = mouse_pos[0] - self.last_mouse_pos[0]
-                        dy = mouse_pos[1] - self.last_mouse_pos[1]
-                        self.dragging_ball.velocity = (dx, dy)
 
                     self.dragging_ball = None
                     self.drag_offset = (0, 0)
@@ -189,6 +191,9 @@ class Game:
             ball.velocity = (vx, vy)
             ball.center = (cx, cy)
 
+            if (vx != 0 or vy != 0):
+                ball.trail.append(ball.center)
+
         for i in range(len(self.balls)):
             for j in range(i+1, len(self.balls)):
                 b1 = self.balls[i]
@@ -256,10 +261,12 @@ class Game:
 
                     if b1 is not self.dragging_ball:
                         b1.center = (b1cx, b1cy)
-                    b1.velocity = (vx1, vy1)
-
+                        b1.trail.append(b1.center)
                     if b2 is not self.dragging_ball:
                         b2.center = (b2cx, b2cy)
+                        b2.trail.append(b2.center)
+
+                    b1.velocity = (vx1, vy1)
                     b2.velocity = (vx2, vy2)
 
         if self.dragging_ball:
@@ -281,9 +288,23 @@ class Game:
         self.screen.fill("black")
 
         for ball in self.balls:
+            trail_list = list(ball.trail)
+            for i, (px, py) in enumerate(trail_list):
+                alpha = int(128 * ((i + 1) / len(trail_list)))
+
+                trail_surf = pygame.Surface((2 * ball.radius, 2 * ball.radius), pygame.SRCALPHA)
+                pygame.draw.circle(
+                    trail_surf,
+                    (ball.color[0] *0.5, ball.color[1]*0.5, ball.color[2]*0.5, alpha),
+                    (ball.radius, ball.radius),
+                    int(ball.radius)
+                )
+                self.screen.blit(trail_surf, (px - ball.radius, py - ball.radius))
+
+        for ball in self.balls:
             pygame.draw.circle(
                 self.screen,
-                ball.color, 
+                ball.color,
                 (int(ball.center[0]), int(ball.center[1])),
                 int(ball.radius)
             )
