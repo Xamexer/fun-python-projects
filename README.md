@@ -12,9 +12,9 @@ Examples of what you’ll find here:
 This repo is less about polished products and more about tinkering, experimenting, and enjoying what’s possible with Python.
 <hr>
 
+![](./o_projects/Mastermind/MastermindDemo.gif)
+![](./o_projects/Typinggame/TypingDemo.gif)
+![](./o_projects/BasicBallPhysics/ball_physics.gif)
 
-![](https://github.com/Xamexer/fun-python-projects/blob/main/o_projects/Mastermind/MastermindDemo.gif)
-![](https://github.com/Xamexer/fun-python-projects/blob/main/o_projects/Typinggame/TypingDemo.gif)
-
-![](https://github.com/Xamexer/fun-python-projects/blob/main/o_projects/MultiTouchInterface/Multi-Touch-Interface/InfraredCamDemo.gif)
-![](https://github.com/Xamexer/fun-python-projects/blob/main/o_projects/MultiTouchInterface/Multi-Touch-Interface/TouchDemo.gif)
+![](./o_projects/MultiTouchInterface/Multi-Touch-Interface/InfraredCamDemo.gif)
+![](./o_projects/MultiTouchInterface/Multi-Touch-Interface/TouchDemo.gif)
