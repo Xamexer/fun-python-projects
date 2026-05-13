@@ -16,5 +16,6 @@ This repo is less about polished products and more about tinkering, experimentin
 ![](./o_projects/Typinggame/TypingDemo.gif)
 ![](./o_projects/BasicBallPhysics/ball_physics.gif)
 
+![](./o_projects/BourseSimulator/borseSimulation.png)
 ![](./o_projects/MultiTouchInterface/Multi-Touch-Interface/InfraredCamDemo.gif)
 ![](./o_projects/MultiTouchInterface/Multi-Touch-Interface/TouchDemo.gif)
